@@ -25,7 +25,7 @@ export class BusquedaRazas {
 
     this.razasFiltradas = this.raza.razas.filter(
       (r) =>
-        r.descripcion.toLowerCase().includes(t) ||
+        r.nombre.toLowerCase().includes(t) ||
         r.descripcion.toLowerCase().includes(t) ||
         r.longevidad.toLowerCase().includes(t) ||
         r.regionPrincipal.toLowerCase().includes(t)
