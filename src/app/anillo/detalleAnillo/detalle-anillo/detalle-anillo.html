@@ -1,0 +1,49 @@
+<div class="barraBusqueda">
+  <div class="acciones">
+    <table>
+      <tr>
+        <td><button routerLink="/buscar" id="buscarAnillo">Buscar Anillo</button></td>
+      </tr>
+    </table>
+  </div>
+</div>
+
+<form [formGroup]="formulario" (ngSubmit)="enviar()">
+  <div>
+    <label>Nombre: </label>
+    <input pInputText type="text" formControlName="nombre" />
+
+    @if (formulario.get('nombre')?.invalid && formulario.get('nombre')?.touched) {
+    <small>El nombre es obligatorio y debe tener al menos 10 caracteres</small>
+    }
+  </div>
+
+  <div>
+    <label>Portador: </label>
+    <input pInputText type="text" formControlName="portador" />
+
+    @if (formulario.get('portador')?.invalid && formulario.get('portador')?.touched) {
+    <small>El nombre es obligatorio y debe tener al menos 5 caracteres</small>
+    }
+  </div>
+
+  <div>
+    <label>Raza: </label>
+    <input pInputText type="text" formControlName="raza" />
+
+    @if (formulario.get('raza')?.invalid && formulario.get('raza')?.touched) {
+    <small>El nombre es obligatorio y debe tener al menos 10 caracteres</small>
+    }
+  </div>
+
+  <div>
+    <label>Poder: </label>
+    <input pInputText type="text" formControlName="poder" />
+
+    @if (formulario.get('poder')?.invalid && formulario.get('poder')?.touched) {
+    <small>El nombre es obligatorio y debe tener al menos 10 caracteres</small>
+    }
+  </div>
+
+  <p-button type="submit" [disabled]="formulario.invalid"> Guardar Anillo </p-button>
+</form>

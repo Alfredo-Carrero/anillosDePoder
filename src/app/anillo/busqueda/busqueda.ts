@@ -5,12 +5,13 @@ import { InputTextModule } from 'primeng/inputtext';
 import { FormsModule } from '@angular/forms';
 import { ButtonModule } from 'primeng/button';
 import { CommonModule } from '@angular/common';
+import { RouterLink } from "@angular/router";
 
 
 
 @Component({
   selector: 'app-busqueda',
-  imports: [InputTextModule,FormsModule,ButtonModule,CommonModule],
+  imports: [InputTextModule, FormsModule, ButtonModule, CommonModule, RouterLink],
   templateUrl: './busqueda.html',
   styleUrl: './busqueda.css',
 })
