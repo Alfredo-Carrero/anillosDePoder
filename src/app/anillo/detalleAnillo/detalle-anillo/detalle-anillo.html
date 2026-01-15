@@ -20,10 +20,10 @@
 
   <div>
     <label>Portador: </label>
-    <input pInputText type="text" formControlName="portador" />
+    <p-select [options]="opcionesRaza" formControlName="portador"></p-select>
 
     @if (formulario.get('portador')?.invalid && formulario.get('portador')?.touched) {
-    <small>El nombre es obligatorio y debe tener al menos 5 caracteres</small>
+    <small>El portador de raza es obligatorio </small>
     }
   </div>
 

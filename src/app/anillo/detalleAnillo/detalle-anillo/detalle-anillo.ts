@@ -23,11 +23,12 @@ import { SelectModule } from 'primeng/select';
 })
 export class DetalleAnillo {
   // options para el html
+  opcionesRaza = ['Elfo', 'Enano', 'Humano', 'Maiar', 'Oscuro'];
 
   formulario: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(10)]),
     portador: new FormControl('', [Validators.required, Validators.minLength(5)]),
-    raza: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    raza: new FormControl('', [Validators.required]),
     poder: new FormControl('', [Validators.required, Validators.minLength(10)]),
   });
 
