@@ -6,6 +6,7 @@ import { TextareaModule } from 'primeng/textarea';
 import { SelectButtonModule } from 'primeng/selectbutton';
 import { ButtonModule } from 'primeng/button';
 import { SelectModule } from 'primeng/select';
+import { Slider, SliderModule } from 'primeng/slider';
 
 @Component({
   selector: 'app-detalle-anillo',
@@ -17,6 +18,7 @@ import { SelectModule } from 'primeng/select';
     TextareaModule,
     SelectButtonModule,
     ButtonModule,
+    SliderModule,
   ],
   templateUrl: './detalle-anillo.html',
   styleUrl: './detalle-anillo.css',
@@ -27,12 +29,15 @@ export class DetalleAnillo {
 
   formulario: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required, Validators.minLength(10)]),
-    portador: new FormControl('', [Validators.required, Validators.minLength(5)]),
+    portador: new FormControl('', [Validators.required, Validators.minLength(3)]),
     raza: new FormControl('', [Validators.required]),
     poder: new FormControl('', [Validators.required, Validators.minLength(10)]),
+    nivelCorrupcion: new FormControl(50, [Validators.min(0), Validators.max(100)]),
   });
 
   enviar() {
-    alert;
+    alert('Formulario enviado');
   }
+
+  // reset
 }
