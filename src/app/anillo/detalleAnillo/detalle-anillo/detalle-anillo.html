@@ -58,7 +58,7 @@
 
     <div class="botonera">
       <p-button type="submit" [disabled]="formulario.invalid"> Guardar Anillo </p-button>
-      <input class="btn-limpiar" type="button" value="Limpiar" />
+      <input class="btn-limpiar" type="button" value="Limpiar" (click)="reset()" />
     </div>
   </form>
 </div>

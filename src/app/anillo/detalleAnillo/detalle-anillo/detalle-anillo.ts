@@ -32,12 +32,18 @@ export class DetalleAnillo {
     portador: new FormControl('', [Validators.required, Validators.minLength(3)]),
     raza: new FormControl('', [Validators.required]),
     poder: new FormControl('', [Validators.required, Validators.minLength(10)]),
-    nivelCorrupcion: new FormControl(50, [Validators.min(0), Validators.max(100)]),
+    nivelCorrupcion: new FormControl(10, [Validators.min(0), Validators.max(100)]),
   });
 
   enviar() {
     alert('Formulario enviado');
   }
 
-  // reset
+  reset() {
+    this.formulario.get('nombre')?.setValue('');
+    this.formulario.get('portador')?.setValue('');
+    this.formulario.get('raza')?.setValue('');
+    this.formulario.get('poder')?.setValue('');
+    this.formulario.get('nivelCorrupcion')?.setValue(50);
+  }
 }
