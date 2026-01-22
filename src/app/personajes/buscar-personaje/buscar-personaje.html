@@ -1,0 +1,30 @@
+<div class="tablaPersonajes">
+  <div class="card flex justify-center">
+    <button pButton routerLink="/crearPersonaje" (click)="crearPersonaje()">
+      <i class="pi pi-check" pButtonIcon></i>
+      <span pButtonLabel>Crear Personaje</span>
+    </button>
+  </div>
+
+  <table>
+    <tr>
+      <th>Nombre</th>
+      <th>Raza</th>
+      <th>Fecha Nacimiento</th>
+      <th>Acciones</th>
+    </tr>
+
+    @for (item of personajes; track item.id) {
+      <tr>
+        <td>{{ item.nombre }}</td>
+        <td>{{ item.raza }}</td>
+        <td>{{ item.fechaNacimiento }}</td>
+        <td>
+          <input type="button" value="EDITAR" (click)="editar(item.id)" />
+        </td>
+      </tr>
+    } @empty {
+      <li>There are no items.</li>
+    }
+  </table>
+</div>

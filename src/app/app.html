@@ -6,8 +6,15 @@
     <div class="acciones">
       <button routerLink="/razas">Explorar Razas</button>
       <button routerLink="/detalle">Ver Anillos</button>
+      <button routerLink="/personajes">Ver Personajes</button>
     </div>
   </div>
 </header>
+<!-- 
+@for (item of paises; track item.name.common) {
+  <li>{{ item.name.common }}</li>
+} @empty {
+  <li>There are no items.</li>
+} -->
 
 <router-outlet />
