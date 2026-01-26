@@ -51,7 +51,7 @@ export class DetallePersonaje {
     this.personajeService.getPersonaje(id).subscribe({
       next: (data) => {
         this.personaje = data;
-        this.formulario.patchValue(data);
+        this.formulario.patchValue(data); // rellena el formulario
       },
 
       error: (err) => {
@@ -75,14 +75,27 @@ export class DetallePersonaje {
     });
   }
 
+  crearPersonaje() {
+    const datos = this.formulario.value;
+    this.personajeService.createPersonaje(datos).subscribe({
+      next: () => {
+        alert('Personaje creado correctamente');
+        this.router.navigate(['/personajes']);
+      },
+      error: (err) => {
+        console.error(err);
+        this.error = 'Error al crear el personaje';
+      },
+    });
+  }
+
   guardar() {
     const id = this.route.snapshot.paramMap.get('id');
 
     if (id) {
       this.actualizarPersonaje(id);
     } else {
-      // llamar createPersonaje
-      alert('Personaje creado');
+      this.crearPersonaje();
     }
   }
 }

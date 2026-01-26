@@ -18,4 +18,8 @@ export class PersonajeService {
   updatePersonaje(id: string, datosActualizados: any): Observable<any>{
     return this.http.put<any>(`${this.apiESDLA}actualizarPersonaje/${id}`, datosActualizados);
   }
+
+  createPersonaje(datos: any): Observable<any> {
+    return this.http.post<any>(`${this.apiESDLA}insertarPersonaje`, datos);
+  }
 }
