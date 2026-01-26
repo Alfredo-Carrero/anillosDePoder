@@ -4,3 +4,12 @@
   margin: 5% auto;
   padding: 10px;
 }
+
+.card {
+  display: flex;
+  margin-bottom: 1rem;
+}
+
+.card button {
+  margin: 0.5rem;
+}
