@@ -20,7 +20,7 @@ export class BuscarPersonaje {
   error = '';
 
   editar(id: number) {
-    alert(id);
+    // alert(id);
     this.route.navigate(['/editar', id]);
   }
 

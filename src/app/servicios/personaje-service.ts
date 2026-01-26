@@ -14,4 +14,8 @@ export class PersonajeService {
   getPersonaje(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiESDLA}obtenerPersonaje/${id}`);
   }
+
+  updatePersonaje(id: string, datosActualizados: any): Observable<any>{
+    return this.http.put<any>(`${this.apiESDLA}actualizarPersonaje/${id}`, datosActualizados);
+  }
 }

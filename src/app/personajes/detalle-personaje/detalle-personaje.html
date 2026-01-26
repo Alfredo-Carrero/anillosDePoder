@@ -12,7 +12,8 @@
     <label for="">Nivel corrupción: </label>
     <p-slider formControlName="nivelCorrupcion" />
 
-    <input type="button" value="Crear" />
-    <input type="button" value="Guardar" />
+    <button pButton (click)="guardar()">
+      {{ route.snapshot.paramMap.get('id') ? 'Editar' : 'Crear' }}
+    </button>
   </form>
 </div>

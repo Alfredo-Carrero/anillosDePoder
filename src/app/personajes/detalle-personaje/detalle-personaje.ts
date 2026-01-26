@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { RouterLink } from '@angular/router';
 import { PersonajeService } from '../../servicios/personaje-service';
 import { FormControl, FormGroup, ReactiveFormsModule } from '@angular/forms';
@@ -27,7 +27,8 @@ import { SliderModule } from 'primeng/slider';
 export class DetallePersonaje {
   constructor(
     private personajeService: PersonajeService,
-    private route: ActivatedRoute,
+    public route: ActivatedRoute,
+    private router: Router,
   ) {}
 
   formulario: FormGroup = new FormGroup({
@@ -41,22 +42,47 @@ export class DetallePersonaje {
 
   ngOnInit(): void {
     const id = this.route.snapshot.paramMap.get('id');
-    this.recuperarDatos(id || '');
+    if (id) {
+      this.recuperarDatos(id);
+    }
   }
 
   recuperarDatos(id: string) {
     this.personajeService.getPersonaje(id).subscribe({
       next: (data) => {
         this.personaje = data;
-        this.formulario.get('nombre')?.setValue(this.personaje.nombre);
-        this.formulario.get('raza')?.setValue(this.personaje.raza);
-        this.formulario.get('fechaNacimiento')?.setValue(this.personaje.fechaNacimiento);
-        this.formulario.get('nivelCorrupcion')?.setValue(this.personaje.nivelCorrupcion);
+        this.formulario.patchValue(data);
       },
 
       error: (err) => {
         this.error = 'Se ha producido un error en la petición';
       },
     });
+  }
+
+  actualizarPersonaje(id: string) {
+    const datosActualizados = this.formulario.value;
+
+    this.personajeService.updatePersonaje(id, datosActualizados).subscribe({
+      next: () => {
+        alert('¡Personaje actualizado correctamente!');
+        this.router.navigate(['/personajes']);
+      },
+      error: (err) => {
+        console.error('Error al actualizar:', err);
+        this.error = 'No se pudo actualizar el personaje. Inténtalo de nuevo.';
+      },
+    });
+  }
+
+  guardar() {
+    const id = this.route.snapshot.paramMap.get('id');
+
+    if (id) {
+      this.actualizarPersonaje(id);
+    } else {
+      // llamar createPersonaje
+      alert('Personaje creado');
+    }
   }
 }
