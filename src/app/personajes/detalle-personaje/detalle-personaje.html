@@ -1,17 +1,18 @@
 <div class="container-form">
-  <form>
+  <form [formGroup]="formulario">
     <label for="">Nombre: </label>
-    <input type="text" />
+    <input type="text" pInputText formControlName="nombre" />
 
     <label for="">Raza: </label>
-    <input type="text" />
+    <input type="text" pInputText formControlName="raza" />
 
     <label for="">Fecha Nacimiento: </label>
-    <input type="date" />
+    <input type="date" formControlName="fechaNacimiento" />
 
     <label for="">Nivel corrupción: </label>
-    <input type="number" />
+    <p-slider formControlName="nivelCorrupcion" />
 
-    <input type="submit" value="Crear" />
+    <input type="button" value="Crear" />
+    <input type="button" value="Guardar" />
   </form>
 </div>

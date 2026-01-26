@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { ChangeDetectorRef, Component } from '@angular/core';
 import { PersonajesService } from '../../servicios/personajes-service';
 import { Router, RouterLink } from '@angular/router';
 import { ButtonModule } from 'primeng/button';
@@ -13,6 +13,7 @@ export class BuscarPersonaje {
   constructor(
     private personajesService: PersonajesService,
     private route: Router,
+    private cdr: ChangeDetectorRef,
   ) {}
 
   personajes: any[] = [];
@@ -35,6 +36,7 @@ export class BuscarPersonaje {
     this.personajesService.getAllPersonajes().subscribe({
       next: (data) => {
         this.personajes = data;
+        this.cdr.detectChanges();
         console.log(this.personajes);
       },
 

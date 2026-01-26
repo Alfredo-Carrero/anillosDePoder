@@ -11,7 +11,7 @@ export class PersonajeService {
 
   private apiESDLA = environment.apiESDLA;
 
-  getPersonaje(id: number): Observable<any> {
+  getPersonaje(id: string): Observable<any> {
     return this.http.get<any>(`${this.apiESDLA}obtenerPersonaje/${id}`);
   }
 }
