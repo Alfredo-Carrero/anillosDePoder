@@ -17,12 +17,38 @@
     </ng-template>
 
     <ng-template pTemplate="body" let-item>
-      <tr>
+      <tr [ngClass]="{ 'fila-inactiva': item.fechaBaja !== null }">
         <td>{{ item.nombre }}</td>
         <td>{{ item.raza }}</td>
         <td>{{ item.fechaNacimiento }}</td>
         <td>
-          <p-button label="EDITAR" icon="pi pi-pencil" severity="success" (onClick)="editar(item.id)">
+          <p-button
+            label="EDITAR"
+            icon="pi pi-pencil"
+            severity="success"
+            (onClick)="editar(item.id)"
+          >
+          </p-button>
+          <p-button
+            label="REACTIVAR"
+            icon="pi pi-pencil"
+            severity="primary"
+            (onClick)="reactivarPersonaje(item.id)"
+          >
+          </p-button>
+          <p-button
+            label="BAJA LÓG"
+            icon="pi pi-pencil"
+            severity="warn"
+            (onClick)="darBajaLogica(item.id)"
+          >
+          </p-button>
+          <p-button
+            label="BAJA FÍS"
+            icon="pi pi-pencil"
+            severity="danger"
+            (onClick)="darBajaFisica(item.id)"
+          >
           </p-button>
         </td>
       </tr>

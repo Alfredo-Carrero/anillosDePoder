@@ -13,3 +13,8 @@
 .card button {
   margin: 0.5rem;
 }
+
+.fila-inactiva {
+  opacity: 0.6;
+  background-color: #f4f4f4;
+}
