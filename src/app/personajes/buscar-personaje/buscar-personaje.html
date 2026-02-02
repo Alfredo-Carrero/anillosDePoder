@@ -22,12 +22,8 @@
         <td>{{ item.raza }}</td>
         <td>{{ item.fechaNacimiento }}</td>
         <td>
-          <p-button
-            label="EDITAR"
-            icon="pi pi-pencil"
-            severity="success"
-            (onClick)="editar(item.id)"
-          >
+          <p-button icon="pi pi-pencil" severity="info" (onClick)="editar(item.id)">
+            <img src="assets/img/editar.png" alt="Editar" />
           </p-button>
 
           @if (item.fechaBaja) {
@@ -46,7 +42,7 @@
               pTooltip="Baja Lógica"
               tooltipPosition="top"
             >
-              <img src="assets/img/baja-logica.png" alt="Baja" style="width: 20px; height: 20px" />
+              <img src="assets/img/baja-logica.png" alt="Baja" />
             </p-button>
           }
 
@@ -55,7 +51,7 @@
             severity="danger"
             (onClick)="darBajaFisica($event, item.id)"
           >
-            <img src="assets/img/baja-fisica.png" alt="Baja" style="width: 20px; height: 20px" />
+            <img src="assets/img/baja-fisica.png" alt="Eliminar" />
           </p-button>
         </td>
       </tr>
