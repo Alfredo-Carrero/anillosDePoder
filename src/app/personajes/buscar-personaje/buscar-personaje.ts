@@ -68,17 +68,23 @@ export class BuscarPersonaje {
     });
   }
 
-  darBajaLogica(id: number) {
-    this.personajeService.bajaLogica(id).subscribe({
-      next: () => {
-        alert('¡Personaje dado de baja temporal correctamente!');
-        this.cargarPersonajes();
+  darBajaLogica(event: Event, id: number) {
+    this.popup.mostrarModal(
+      event,
+      'Baja',
+      'Se va a dar de baja el personaje ¿Estás seguro?',
+      () => {
+        this.personajeService.bajaLogica(id).subscribe({
+          next: () => {
+            this.cargarPersonajes();
+          },
+          error: (err) => {
+            console.error('Error al dar de baja lógica:', err);
+            this.error = 'No se pudo dar de baja lógica el personaje. Inténtalo de nuevo.';
+          },
+        });
       },
-      error: (err) => {
-        console.error('Error al dar de baja lógica:', err);
-        this.error = 'No se pudo dar de baja lógica el personaje. Inténtalo de nuevo.';
-      },
-    });
+    );
   }
 
   darBajaFisica(id: number) {
@@ -94,4 +100,3 @@ export class BuscarPersonaje {
     });
   }
 }
-

@@ -37,11 +37,16 @@
           >
           </p-button>
           <p-button
-            label="BAJA LÓG"
-            icon="pi pi-pencil"
             severity="warn"
-            (onClick)="darBajaLogica(item.id)"
+            (onClick)="darBajaLogica($event, item.id)"
+            pTooltip="Baja Lógica"
+            tooltipPosition="top"
           >
+            <img
+              src="assets/img/baja-logica.png"
+              alt="Baja"
+              style="width: 20px; height: 20px"
+            />
           </p-button>
           <p-button
             label="BAJA FÍS"
