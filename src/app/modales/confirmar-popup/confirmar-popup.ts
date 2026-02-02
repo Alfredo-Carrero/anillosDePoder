@@ -51,4 +51,18 @@ export class ConfirmarPopup {
       },
     });
   }
+
+  mostrarModal(event: Event, header: string, message: string, aceptar: () => void){
+    this.confirmationService.confirm({
+      target: event.currentTarget as EventTarget,
+      header: header,
+      message: message,
+      icon: 'pi pi-exclamation-triangle',
+      acceptLabel: 'Confirmar',
+      rejectLabel: 'Cancelar',
+      accept: () => {
+        aceptar(); // Ejecuta la función que le mande el padre
+      }
+    });
+  }
 }

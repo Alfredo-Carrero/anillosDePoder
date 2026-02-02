@@ -9,7 +9,7 @@ import { ViewChild } from '@angular/core';
 import { ConfirmarPopup } from '../../modales/confirmar-popup/confirmar-popup';
 @Component({
   selector: 'app-buscar-personaje',
-  imports: [ButtonModule, TableModule, RouterLink, CommonModule],
+  imports: [ButtonModule, TableModule, RouterLink, CommonModule, ConfirmarPopup],
   templateUrl: './buscar-personaje.html',
   styleUrl: './buscar-personaje.css',
 })
@@ -53,16 +53,18 @@ export class BuscarPersonaje {
     });
   }
 
-  reactivarPersonaje(id: number) {
-    this.personajeService.reactivarPersonaje(id).subscribe({
-      next: () => {
-        alert('¡Personaje reactivado correctamente!');
-        this.router.navigate(['/personajes']);
-      },
-      error: (err) => {
-        console.error('Error al actualizar:', err);
-        this.error = 'No se pudo reactivar el personaje. Inténtalo de nuevo.';
-      },
+  reactivarPersonaje(event: Event, id: number) {
+    this.popup.mostrarModal(event, 'Reactivar', '¿Deseas reactivar el personaje?', () => {
+      this.personajeService.reactivarPersonaje(id).subscribe({
+        next: () => {
+          // alert('¡Personaje reactivado correctamente!');
+          this.cargarPersonajes();
+        },
+        error: (err) => {
+          console.error('Error al actualizar:', err);
+          this.error = 'No se pudo reactivar el personaje. Inténtalo de nuevo.';
+        },
+      });
     });
   }
 
@@ -92,3 +94,4 @@ export class BuscarPersonaje {
     });
   }
 }
+

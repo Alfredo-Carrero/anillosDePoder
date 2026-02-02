@@ -33,7 +33,7 @@
             label="REACTIVAR"
             icon="pi pi-pencil"
             severity="primary"
-            (onClick)="reactivarPersonaje(item.id)"
+            (onClick)="reactivarPersonaje($event, item.id)"
           >
           </p-button>
           <p-button
@@ -61,3 +61,5 @@
     </ng-template>
   </p-table>
 </div>
+
+<app-confirmar-popup></app-confirmar-popup>
