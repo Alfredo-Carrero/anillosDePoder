@@ -29,21 +29,26 @@
             (onClick)="editar(item.id)"
           >
           </p-button>
-          <p-button
-            label="REACTIVAR"
-            icon="pi pi-pencil"
-            severity="primary"
-            (onClick)="reactivarPersonaje($event, item.id)"
-          >
-          </p-button>
-          <p-button
-            severity="warn"
-            (onClick)="darBajaLogica($event, item.id)"
-            pTooltip="Baja Lógica"
-            tooltipPosition="top"
-          >
-            <img src="assets/img/baja-logica.png" alt="Baja" style="width: 20px; height: 20px" />
-          </p-button>
+
+          @if (item.fechaBaja) {
+            <p-button
+              severity="primary"
+              (onClick)="reactivarPersonaje($event, item.id)"
+              pTooltip="Reactivar"
+              tooltipPosition="top"
+            >
+              <span style="font-size: 1.2rem">↩</span>
+            </p-button>
+          } @else {
+            <p-button
+              severity="warn"
+              (onClick)="darBajaLogica($event, item.id)"
+              pTooltip="Baja Lógica"
+              tooltipPosition="top"
+            >
+              <img src="assets/img/baja-logica.png" alt="Baja" style="width: 20px; height: 20px" />
+            </p-button>
+          }
 
           <p-button
             icon="pi pi-pencil"
