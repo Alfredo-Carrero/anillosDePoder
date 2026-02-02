@@ -42,18 +42,15 @@
             pTooltip="Baja Lógica"
             tooltipPosition="top"
           >
-            <img
-              src="assets/img/baja-logica.png"
-              alt="Baja"
-              style="width: 20px; height: 20px"
-            />
+            <img src="assets/img/baja-logica.png" alt="Baja" style="width: 20px; height: 20px" />
           </p-button>
+
           <p-button
-            label="BAJA FÍS"
             icon="pi pi-pencil"
             severity="danger"
-            (onClick)="darBajaFisica(item.id)"
+            (onClick)="darBajaFisica($event, item.id)"
           >
+            <img src="assets/img/baja-fisica.png" alt="Baja" style="width: 20px; height: 20px" />
           </p-button>
         </td>
       </tr>

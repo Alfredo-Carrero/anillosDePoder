@@ -71,7 +71,7 @@ export class BuscarPersonaje {
   darBajaLogica(event: Event, id: number) {
     this.popup.mostrarModal(
       event,
-      'Baja',
+      'Baja Lógica',
       'Se va a dar de baja el personaje ¿Estás seguro?',
       () => {
         this.personajeService.bajaLogica(id).subscribe({
@@ -87,16 +87,23 @@ export class BuscarPersonaje {
     );
   }
 
-  darBajaFisica(id: number) {
-    this.personajeService.bajaFisica(id).subscribe({
-      next: () => {
-        alert('¡Personaje eliminado correctamente!');
-        this.cargarPersonajes();
+  darBajaFisica(event: Event, id: number) {
+    this.popup.mostrarModal(
+      event,
+      'Baja Física',
+      'Se va a borrar de forma definitiva el registro ¿Estás seguro que deseas borrarlo?',
+      () => {
+        this.personajeService.bajaFisica(id).subscribe({
+          next: () => {
+            alert('¡Personaje eliminado correctamente!');
+            this.cargarPersonajes();
+          },
+          error: (err) => {
+            console.error('Error al eliminar:', err);
+            this.error = 'No se pudo eliminar el personaje. Inténtalo de nuevo.';
+          },
+        });
       },
-      error: (err) => {
-        console.error('Error al eliminar:', err);
-        this.error = 'No se pudo eliminar el personaje. Inténtalo de nuevo.';
-      },
-    });
+    );
   }
 }
