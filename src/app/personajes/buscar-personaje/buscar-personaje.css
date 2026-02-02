@@ -18,3 +18,7 @@
   opacity: 0.6;
   background-color: #f4f4f4;
 }
+
+p-button {
+  margin: 5px;
+}

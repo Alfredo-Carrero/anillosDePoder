@@ -5,7 +5,8 @@ import { ButtonModule } from 'primeng/button';
 import { TableModule } from 'primeng/table';
 import { PersonajeService } from '../../servicios/personaje-service';
 import { CommonModule } from '@angular/common';
-
+import { ViewChild } from '@angular/core';
+import { ConfirmarPopup } from '../../modales/confirmar-popup/confirmar-popup';
 @Component({
   selector: 'app-buscar-personaje',
   imports: [ButtonModule, TableModule, RouterLink, CommonModule],
@@ -23,6 +24,7 @@ export class BuscarPersonaje {
 
   personajes: any[] = [];
   error = '';
+  @ViewChild(ConfirmarPopup) popup!: ConfirmarPopup;
 
   editar(id: number) {
     // alert(id);
