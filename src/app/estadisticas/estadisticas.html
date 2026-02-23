@@ -1,1 +1,32 @@
-<p>estadisticas works!</p>
+<div class="estadisticas-container">
+  <p-card [style]="{ width: '600px', margin: '0 auto', textAlign: 'center' }">
+    <p>Tu historial de conocimiento sobre la Tierra Media</p>
+
+    <div class="stats-grid">
+      <div class="stat-box neutral">
+        <h3>Partidas Jugadas</h3>
+        <span class="stat-number">{{ estadisticas.jugadas }}</span>
+      </div>
+
+      <div class="stat-box success">
+        <h3>Victorias</h3>
+        <span class="stat-number">{{ estadisticas.victorias }}</span>
+      </div>
+
+      <div class="stat-box danger">
+        <h3>Derrotas</h3>
+        <span class="stat-number">{{ estadisticas.derrotas }}</span>
+      </div>
+    </div>
+
+    <div class="acciones-footer">
+      <p-button
+        label="Reiniciar Historial"
+        icon="pi pi-trash"
+        (onClick)="limpiarEstadisticas()"
+        severity="danger"
+        [outlined]="true"
+      ></p-button>
+    </div>
+  </p-card>
+</div>
