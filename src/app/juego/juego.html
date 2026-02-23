@@ -1,0 +1,93 @@
+<div class="juego-container">
+  @if (estado === 'inicio') {
+    <p-card
+      header="Trivial: El Señor de los Anillos"
+      [style]="{ width: '400px', margin: '0 auto', textAlign: 'center' }"
+    >
+      <p>
+        Demuestra tus conocimientos sobre la Tierra Media. Responde 5 preguntas seguidas para ganar.
+        ¡Un solo fallo y perderás!
+      </p>
+      <p-button
+        label="Comenzar"
+        icon="pi pi-play"
+        (onClick)="empezarPartida()"
+        severity="success"
+      ></p-button>
+    </p-card>
+  }
+
+  @if (estado === 'jugando' && preguntaActual) {
+    <p-card
+      [header]="'Pregunta ' + (aciertos + 1) + ' de 5'"
+      [style]="{ width: '500px', margin: '0 auto' }"
+    >
+      <h3 style="text-align: center; margin-bottom: 2rem">{{ preguntaActual.pregunta }}</h3>
+
+      <div class="respuestas-grid">
+        <p-button
+          [label]="preguntaActual.respuesta1"
+          (onClick)="responder(1)"
+          styleClass="w-full"
+        ></p-button>
+        <p-button
+          [label]="preguntaActual.respuesta2"
+          (onClick)="responder(2)"
+          styleClass="w-full"
+        ></p-button>
+        <p-button
+          [label]="preguntaActual.respuesta3"
+          (onClick)="responder(3)"
+          styleClass="w-full"
+        ></p-button>
+        <p-button
+          [label]="preguntaActual.respuesta4"
+          (onClick)="responder(4)"
+          styleClass="w-full"
+        ></p-button>
+      </div>
+    </p-card>
+  }
+
+  @if (estado === 'ganado') {
+    <p-card header="¡Victoria!" [style]="{ width: '400px', margin: '0 auto', textAlign: 'center' }">
+      <p>Enhorabuena. Has demostrado ser un verdadero sabio de la Tierra Media.</p>
+      <div class="acciones-finales">
+        <p-button
+          label="Jugar de nuevo"
+          icon="pi pi-refresh"
+          (onClick)="estado = 'inicio'"
+        ></p-button>
+        <p-button
+          label="Ver Estadísticas"
+          icon="pi pi-chart-bar"
+          severity="info"
+          routerLink="/estadisticas"
+        ></p-button>
+      </div>
+    </p-card>
+  }
+
+  @if (estado === 'perdido') {
+    <p-card
+      header="¡Has perdido!"
+      [style]="{ width: '400px', margin: '0 auto', textAlign: 'center' }"
+    >
+      <p>Las sombras de Mordor te han superado.</p>
+      <div class="acciones-finales">
+        <p-button
+          label="Reintentar"
+          icon="pi pi-refresh"
+          severity="danger"
+          (onClick)="estado = 'inicio'"
+        ></p-button>
+        <p-button
+          label="Ver Estadísticas"
+          icon="pi pi-chart-bar"
+          severity="info"
+          routerLink="/estadisticas"
+        ></p-button>
+      </div>
+    </p-card>
+  }
+</div>

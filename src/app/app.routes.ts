@@ -6,6 +6,8 @@ import { DetalleAnillo } from './anillo/detalleAnillo/detalle-anillo/detalle-ani
 import { BuscarPersonaje } from './personajes/buscar-personaje/buscar-personaje';
 import { DetallePersonaje } from './personajes/detalle-personaje/detalle-personaje';
 import { Padre } from './modales/padre/padre';
+import { JuegoComponent } from './juego/juego';
+import { EstadisticasComponent } from './estadisticas/estadisticas';
 
 export const routes: Routes = [
   { path: 'detalle', component: Detalle },
@@ -16,4 +18,6 @@ export const routes: Routes = [
   { path: 'editar/:id', component: DetallePersonaje },
   { path: 'crearPersonaje', component: DetallePersonaje },
   { path: 'padre', component: Padre },
+  { path: 'juego', component: JuegoComponent},
+  { path: 'estadisticas', component: EstadisticasComponent}
 ];
